@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "author": "Nidula Gunawardana",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 246.6, "left": -256.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 9.6, "left": 4.84, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -18.9,
+      "left": 148.2,
+      "attrs": { "temperature": "36.8" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 92.4, "left": -63.4, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 147.2,
+      "left": -287.2,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr2",
+      "top": 147,
+      "left": 247.6,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -221.8,
+      "left": -46.2,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v9.6", "h-28.8", "v-124.8", "h-144", "v48" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v19.2", "h-67.2", "v-86.4" ] ],
+    [ "dht1:SDA", "esp:15", "#8f4814", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "white", [ "v0" ] ],
+    [ "led1:A", "esp:12", "gray", [ "v0" ] ],
+    [ "ldr1:VCC", "bb1:tp.13", "red", [ "h0" ] ],
+    [ "ldr2:VCC", "bb1:tp.37", "red", [ "h0" ] ],
+    [ "ldr2:GND", "bb1:tn.38", "black", [ "h0" ] ],
+    [ "ldr1:GND", "bb1:tn.14", "black", [ "h0" ] ],
+    [ "ldr1:AO", "esp:34", "violet", [ "h38.4", "v-125.5" ] ],
+    [ "ldr2:AO", "esp:35", "violet", [ "h-9.6", "v-200.9", "h-259.2", "v115.2" ] ],
+    [ "esp:GND.3", "bb1:tn.30", "black", [ "h0" ] ],
+    [ "esp:3V3", "bb1:tp.19", "red", [ "h0" ] ],
+    [ "servo1:GND", "bb1:tn.15", "black", [ "v19.2", "h-115.2" ] ],
+    [ "servo1:V+", "esp:5V", "red", [ "v0" ] ],
+    [ "servo1:PWM", "esp:18", "gold", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
